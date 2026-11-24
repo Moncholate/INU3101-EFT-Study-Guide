@@ -545,17 +545,6 @@ table.rub .pts{display:block;font-weight:700;color:#be123c;margin-bottom:3px}
     </div>
   </div>
 
-  <div class="tip-box">
-    <span class="box-title">💡 Plan para esta semana</span>
-    <ul class="clean">
-      <li><strong>Día 1:</strong> Gramática.</li>
-      <li><strong>Día 2:</strong> Listening y Reading.</li>
-      <li><strong>Día 3:</strong> Writing.</li>
-      <li><strong>Día 4:</strong> Ensayo completo y revisión con Gemini.</li>
-      <li><strong>Días 5–6:</strong> Speaking y Práctica oral (describir rutinas en voz alta; ojalá en pareja).</li>
-      <li><strong>Día 7:</strong> Checklist y repaso de tus errores del Ensayo.</li>
-    </ul>
-  </div>
 </section>
 
 <!-- ==================== GRAMÁTICA ==================== -->
@@ -1015,9 +1004,9 @@ table.rub .pts{display:block;font-weight:700;color:#be123c;margin-bottom:3px}
         <div class="es-text" id="es-wr">Escribe una descripción breve de una persona famosa que admires (un deportista, un cantante, un actor, etc.). Tu texto debe tener al menos 60 palabras en total, divididas en tres partes (20–25 palabras cada una). Si no conoces algún dato (por ejemplo, horarios o gustos), puedes imaginarlo. (12 puntos)</div>
       </div>
       <div class="writing-prompt">
-        <p><strong>Part 1: Personal details.</strong> The person's complete name, why he/she is famous, age, nationality, city or country where he/she lives, and a brief physical description.</p>
-        <p><strong>Part 2: Work.</strong> What he/she does, where he/she works, and the times he/she usually starts and finishes a normal working day.</p>
-        <p><strong>Part 3: Preferences.</strong> What he/she likes and dislikes, what he/she usually does on weekends, his/her favorite season or month, and one extra detail of your choice.</p>
+        <p><strong>Part 1: Personal information.</strong> The person's name, age, country, nationality, and the city where he/she lives.</p>
+        <p><strong>Part 2: Routine.</strong> His/Her daily routine: work, studies, or daily activities.</p>
+        <p><strong>Part 3: Likes and dislikes.</strong> What he/she loves or likes doing, and what he/she hates or doesn't like doing in his/her life.</p>
         <p style="margin-top:6px">💡 <em>If you don't know some information (for example, times or likes), just imagine it.</em></p>
       </div>
       <textarea class="writing-textarea" id="writingText" placeholder="Start writing here…" oninput="mt_updateWordCount();mt_saveAll()"></textarea>
@@ -2046,10 +2035,10 @@ function buildPrompt(section){
     const text = g('writingText').trim();
     geminiText = 'Eres un profesor experto en inglés como lengua extranjera para nivel A2 (CEFR).\nUn estudiante de nivel A2, hablante nativo de español, escribió el siguiente texto en inglés.\n\n---\nNÚMERO DE PALABRAS: ' + countWords(text) + ' (mínimo requerido: 60)\n\nTEXTO DEL ESTUDIANTE:\n"' + text + '"\n---\n\n' +
       'TAREA:\nEl estudiante debía escribir una descripción breve de una persona famosa que admira, en tercera persona, con al menos 60 palabras divididas en tres partes (20–25 palabras cada una). Podía imaginar los datos que no conociera.\n' +
-      'Parte 1 (datos personales): nombre completo, por qué es famosa, edad, nacionalidad, ciudad o país donde vive y una breve descripción física.\n' +
-      'Parte 2 (trabajo): qué hace, dónde trabaja y a qué hora suele empezar y terminar un día normal de trabajo.\n' +
-      'Parte 3 (preferencias): qué le gusta y qué no le gusta, qué hace normalmente los fines de semana, su estación o mes favorito y un detalle extra.\n' +
-      'Gramática esperada: presente simple en tercera persona (he/she + verbo con -s, doesn\'t + verbo base), be y have para la descripción, adverbios de frecuencia y preposiciones de tiempo (at + hora, on + día, in + mes o estación).\n' +
+      'Parte 1 (información personal): nombre, edad, país, nacionalidad y ciudad donde vive.\n' +
+      'Parte 2 (rutina): su rutina diaria: trabajo, estudios o actividades del día.\n' +
+      'Parte 3 (gustos): qué le encanta o le gusta hacer, y qué odia o no le gusta hacer en su vida.\n' +
+      'Gramática esperada: presente simple en tercera persona (he/she + verbo con -s, doesn\'t + verbo base), love/like/hate + verbo con -ing, adverbios de frecuencia y preposiciones de tiempo (at + hora, on + día, in + mes o estación).\n' +
       'Cada dato que falte cuenta como idea no desarrollada en el criterio de Coherencia y Extensión.\n\nRÚBRICA OFICIAL (12 puntos):\n';
     RUBRIC.forEach(c => {
       geminiText += '\n' + c.title + ' (' + fmt(c.levels[0][1]) + ' pts)\n' + c.levels.map(l => '- ' + fmt(l[1]) + ' ' + ptsLabel(l[1]) + ' (' + l[0] + '): ' + l[2]).join('\n') + '\n';
